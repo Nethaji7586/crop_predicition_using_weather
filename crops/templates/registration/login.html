@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #DEF2F1; /* Soft Teal background */
+            color: #e0e0e0; /* light grey text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 15px;
+        }
+
+        .form-card {
+            background-color: #FFFFFF; /* slightly lighter dark background */
+            border: 1px solid #3AAFA9; /* Light Blue border */
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .form-card h2 {
+            color:black; /* bright gold */
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            background-color: #FFFFFF; /* dark input background */
+            color:#1e1e2f;
+            border: 1px solid #666;
+            padding: 12px;
+            border-radius: 20px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #e0e0e0;
+            font-size: 0.9em;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #3AAFA9;
+            box-shadow: #3AAFA9;
+        }
+
+        button {
+            background-color: #3AAFA9; /* dark slate blue */
+            color: #1e1e2f;
+            border: none;
+            padding: 12px 0;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #1e1e2f; /* bright gold */
+            color: #3AAFA9; /* change text color to dark on hover */
+            transform: scale(1.02);
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #1e1e2f;
+        }
+
+        p a {
+            color: #3AAFA9;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-card">
+    <h2>Login to Your Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Log in</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+</div>
+
+</body>
+</html>
