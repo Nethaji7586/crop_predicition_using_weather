@@ -5,291 +5,314 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Crop Suggestions{% endblock %}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@100;400;600;700&family=Righteous&display=swap');
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@100;400;600;700&family=Righteous&display=swap');
 
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background-color: #DEF2F1; /* Soft Teal background */
-            color: #17252A; /* Dark Blue text */
-            font-family: "Poppins", sans-serif;
-        }
+body {
+    background-color: #DEF2F1; /* Soft Teal background */
+    color: #17252A; /* Dark Blue text */
+    font-family: "Poppins", sans-serif;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 80px auto; /* Adjusted for fixed navbar */
-            padding: 20px;
-            padding-bottom: 60px; /* Space for fixed footer */
-        }
+.container {
+    max-width: 1200px;
+    margin: 80px auto; /* Adjusted for fixed navbar */
+    padding: 20px;
+    padding-bottom: 60px; /* Space for fixed footer */
+}
 
-        /* Navbar */
-        .navbar {
-            background-color: #17252A; /* Dark Blue navbar */
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* Keeps navbar on top */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
+/* Navbar */
+.navbar {
+    background-color: #17252A; /* Dark Blue navbar */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Keeps navbar on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 
-        .navbar h1 {
-            color: #FFFFFF; /* White text for navbar title */
-            margin: 0;
-            font-size: 1.5em;
-        }
+.navbar h1 {
+    color: #FFFFFF; /* White text for navbar title */
+    margin: 0;
+    font-size: 1.5em;
+}
 
-        .nav-button {
-            background-color: #3AAFA9; /* Light Blue */
-            color: #FFFFFF; /* White text */
-            border: none;
-            cursor: pointer;
-            font-size: 1em;
-            padding: 8px 16px;
-            border-radius: 4px;
-        }
+.nav-button {
+    background-color: #3AAFA9; /* Light Blue */
+    color: #FFFFFF; /* White text */
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
 
-        .nav-button:hover {
-            background-color: #2B7A78; /* Teal on hover */
-        }
+.nav-button:hover {
+    background-color: #2B7A78; /* Teal on hover */
+}
 
-        /* Dropdown */
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 20px;
-            background-color: #3AAFA9; /* Light Blue */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
+/* Dropdown */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background-color: #3AAFA9; /* Light Blue */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
 
-        .dropdown a {
-            display: block;
-            padding: 10px;
-            color: #17252A; /* Dark Blue */
-            text-decoration: none;
-        }
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: #17252A; /* Dark Blue */
+    text-decoration: none;
+}
 
-        .dropdown a:hover {
-            background-color: #DEF2F1; /* Soft Teal on hover */
-        }
+.dropdown a:hover {
+    background-color: #DEF2F1; /* Soft Teal on hover */
+}
 
-        .show {
-            display: block;
-        }
+.show {
+    display: block;
+}
 
-        table {
-        width: 100%; /* Full width of the container */
-        border-collapse: collapse; /* Collapses borders between cells */
-        margin-top: 20px; /* Space above the table */
+table {
+    width: 100%; /* Full width of the container */
+    border-collapse: collapse; /* Collapses borders between cells */
+    margin-top: 20px; /* Space above the table */
+}
+
+th, td {
+    padding: 12px; /* Padding inside cells */
+    text-align: left; /* Left align text */
+    border-bottom: 1px solid #ddd; /* Light grey border below each row */
+}
+
+thead {
+    background-color: #17252A; /* Dark Blue background for the header */
+    color: #FFFFFF; /* White text for the header */
+}
+
+th {
+    font-weight: bold; /* Bold text for headers */
+    text-align: center; /* Center align header text */
+}
+
+/* Set background color for table rows */
+tbody tr {
+    background-color: #E6F9F9; /* Light cyan for table rows */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Change background color on row hover */
+tbody tr:hover {
+    color: #17252A; /* Dark Blue text on hover */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light grey for even rows */
+}
+
+h2 {
+    color: #17252A; /* Dark Blue heading */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Search Form */
+#filterForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-width: 400px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#searchQuery {
+    padding: 10px;
+    width: 100%; /* Full width for mobile */
+    max-width: 400px;
+    border: none;
+    border-radius: 20px; /* Curved corners */
+    margin-bottom: 15px;
+    background-color: #FFFFFF; /* White for inputs */
+    color: #17252A; /* Dark Blue text */
+    font-size: 1em;
+}
+
+#searchQuery:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 58, 140, 0.5); /* Light Blue glow on focus */
+}
+
+.card {
+    padding: 20px; /* Ensure enough padding inside the card */
+    background-color: #FFFFFF; /* White card background */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.suggestion-form {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+    align-items: stretch; /* Ensure inputs take full width */
+    gap: 15px; /* Space between items */
+}
+
+.suggestion-form input[type="text"],
+.suggestion-form input[type="number"],
+.suggestion-form select,
+.submit-button {
+    width: 100%; /* Make inputs and button take full width of the form */
+    height: 50px; /* Set a fixed height for uniformity */
+    padding: 12px; /* Consistent padding */
+    background-color: #FFFFFF; /* White for inputs */
+    border: 1px solid #3AAFA9; /* Light Blue border */
+    border-radius: 20px; /* Curved corners */
+    color: #17252A; /* Dark Blue text */
+    font-size: 1em; /* Consistent font size */
+}
+
+.suggestion-form input[type="text"]:focus,
+.suggestion-form input[type="number"]:focus,
+.suggestion-form select:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(58, 175, 169, 0.6); /* Light Blue glow on focus */
+    border-color: #2B7A78; /* Teal border on focus */
+}
+
+.submit-button {
+    background-color: #3AAFA9; /* Light Blue */
+    color: #FFFFFF; /* White text */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.submit-button:hover {
+    background-color: #2B7A78; /* Teal on hover */
+    color: #FFFFFF; /* White text on hover */
+}
+
+.results {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.result-item {
+    background-color: #3AAFA9; /* Light Blue */
+    color: #FFFFFF; /* White text */
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.result-item:hover {
+    transform: translateY(-5px);
+}
+
+.no-suggestions {
+    color: #E63946; /* Red for no results */
+}
+
+/* Footer */
+footer {
+    background-color: #17252A; /* Dark Blue footer */
+    color: #FFFFFF; /* White text */
+    text-align: center;
+    padding: 15px;
+    position: fixed; /* Fixed footer */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Add or adjust z-index */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 1.2em; /* Adjust heading size for mobile */
     }
 
-    th, td {
-        padding: 12px; /* Padding inside cells */
-        text-align: left; /* Left align text */
-        border-bottom: 1px solid #ddd; /* Light grey border below each row */
+    .navbar {
+        align-items: flex-start; /* Align items to the left */
     }
 
+    .navbar .nav-button {
+        margin-bottom: 10px; /* Space between nav button and dropdown */
+    }
+
+    .slider-container {
+        flex-direction: column; /* Stack elements vertically */
+        width: 100%; /* Full width */
+    }
+
+    .results {
+        padding: 0 10px; /* Padding for results */
+    }
+
+    .result-item {
+        width: 90%; /* Limit item width on mobile */
+    }
+
+    /* Table Responsiveness */
     thead {
-        background-color: #17252A; /* Dark Blue background for the header */
-        color: #FFFFFF; /* White text for the header */
+        display: none; /* Hide the table header on small screens */
     }
 
-    th {
-        font-weight: bold; /* Bold text for headers */
-        text-align: center; /* Center align header text */
-    }
-
-    /* Set background color for table rows */
     tbody tr {
-        background-color: #E6F9F9; /* Light cyan for table rows */
-        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        display: flex;
+        flex-direction: column; /* Stack cells vertically */
+        margin-bottom: 10px; /* Space between rows */
+        border: 1px solid #ddd; /* Optional border around each row */
+        padding: 10px; /* Padding around the row */
+        background-color: #E6F9F9; /* Background for rows */
     }
 
-    /* Change background color on row hover */
-    tbody tr:hover {
-        color: #17252A; /* White text on hover */
+    tbody tr > td {
+        display: flex;
+        justify-content: space-between; /* Space out the cells */
+        padding: 5px; /* Adjusted padding for mobile */
+        border-bottom: none; /* Remove bottom borders for mobile view */
     }
 
-    tbody tr:nth-child(even) {
-        background-color: #f2f2f2; /* Light grey for even rows */
+    tbody tr > td:first-child {
+        font-weight: bold; /* Bold for labels */
+        color: #17252A; /* Darker color for the first column to stand out */
     }
-
-        h2 {
-            color: #17252A; /* Dark Blue heading */
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Search Form */
-        #filterForm {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .slider-container {
-            display: flex;
-            align-items: center;
-            width: 60%;
-            max-width: 400px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        #searchQuery {
-            padding: 10px;
-            width: 100%; /* Full width for mobile */
-            max-width: 400px;
-            border: none;
-            border-radius: 20px; /* Curved corners */
-            margin-bottom: 15px;
-            background-color: #FFFFFF; /* White for inputs */
-            color: #17252A; /* Dark Blue text */
-            font-size: 1em;
-        }
-
-        #searchQuery:focus {
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 58, 140, 0.5); /* Light Blue glow on focus */
-        }
-
-        .card {
-            
-            padding: 20px; /* Ensure enough padding inside the card */
-            background-color: #FFFFFF; /* White card background */
-            border-radius: 20px; /* Rounded corners */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-
-        .suggestion-form {
-            display: flex;
-            flex-direction: column; /* Stack inputs vertically */
-            align-items: stretch; /* Ensure inputs take full width */
-            gap: 15px; /* Space between items */
-        }
-
-        .suggestion-form input[type="text"],
-        .suggestion-form input[type="number"],
-        .suggestion-form select,
-        .submit-button {
-            width: 100%; /* Make inputs and button take full width of the form */
-            height: 50px; /* Set a fixed height for uniformity */
-            padding: 12px; /* Consistent padding */
-            background-color: #FFFFFF; /* White for inputs */
-            border: 1px solid #3AAFA9; /* Light Blue border */
-            border-radius: 20px; /* Curved corners */
-            color: #17252A; /* Dark Blue text */
-            font-size: 1em; /* Consistent font size */
-        }
-
-        .suggestion-form input[type="text"]:focus,
-        .suggestion-form input[type="number"]:focus,
-        .suggestion-form select:focus {
-            outline: none;
-            box-shadow: 0 0 8px rgba(58, 175, 169, 0.6); /* Light Blue glow on focus */
-            border-color: #2B7A78; /* Teal border on focus */
-        }
-
-        .submit-button {
-            background-color: #3AAFA9; /* Light Blue */
-            color: #FFFFFF; /* White text */
-            border: none; /* No border */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background-color 0.3s; /* Smooth transition */
-        }
-
-        .submit-button:hover {
-            background-color: #2B7A78; /* Teal on hover */
-            color: #FFFFFF; /* White text on hover */
-        }
-
-        .results {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .result-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .result-item {
-            background-color: #3AAFA9; /* Light Blue */
-            color: #FFFFFF; /* White text */
-            padding: 10px 20px;
-            border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .result-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .no-suggestions {
-            color: #E63946; /* Red for no results */
-        }
-
-        /* Footer */
-        footer {
-            background-color: #17252A; /* Dark Blue footer */
-            color: #FFFFFF; /* White text */
-            text-align: center;
-            padding: 15px;
-            position: fixed; /* Fixed footer */
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            z-index: 1000; /* Add or adjust z-index */
-        }
-
-        
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar h1 {
-                font-size: 1.2em; /* Adjust heading size for mobile */
-            }
-            
-            .navbar {
-                align-items: flex-start; /* Align items to the left */
-            }
-
-            .navbar .nav-button {
-                margin-bottom: 10px; /* Space between nav button and dropdown */
-            }
-            
-            .slider-container {
-                flex-direction: column; /* Stack elements vertically */
-                width: 100%; /* Full width */
-            }
-            
-            .results {
-                padding: 0 10px; /* Padding for results */
-            }
-
-            .result-item {
-                width: 90%; /* Limit item width on mobile */
-            }
-        }
-    </style>
+}
+</style>
+   
 </head>
 <body>
 
