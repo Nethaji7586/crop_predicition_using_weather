@@ -91,44 +91,42 @@
         }
 
         table {
-        width: 100%; /* Full width of the container */
-        border-collapse: collapse; /* Collapses borders between cells */
-        margin-top: 20px; /* Space above the table */
-    }
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-    th, td {
-        padding: 12px; /* Padding inside cells */
-        text-align: left; /* Left align text */
-        border-bottom: 1px solid #ddd; /* Light grey border below each row */
-    }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-    thead {
-        background-color: #17252A; /* Dark Blue background for the header */
-        color: #FFFFFF; /* White text for the header */
-    }
+        thead {
+            background-color: #17252A;
+            color: #FFFFFF;
+        }
 
-    th {
-        font-weight: bold; /* Bold text for headers */
-        text-align: center; /* Center align header text */
-    }
+        th {
+            font-weight: bold;
+            text-align: center;
+        }
 
-    /* Set background color for table rows */
-    tbody tr {
-        background-color: #E6F9F9; /* Light cyan for table rows */
-        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-    }
+        tbody tr {
+            background-color: #E6F9F9;
+            transition: background-color 0.3s ease;
+        }
 
-    /* Change background color on row hover */
-    tbody tr:hover {
-        color: #17252A; /* White text on hover */
-    }
+        tbody tr:hover {
+            background-color: #DEF2F1;
+        }
 
-    tbody tr:nth-child(even) {
-        background-color: #f2f2f2; /* Light grey for even rows */
-    }
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
         h2 {
-            color: #17252A; /* Dark Blue heading */
+            color: #17252A;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -141,81 +139,69 @@
             margin-bottom: 20px;
         }
 
-        .slider-container {
-            display: flex;
-            align-items: center;
-            width: 60%;
-            max-width: 400px;
-            position: relative;
-            margin-bottom: 20px;
-        }
-
         #searchQuery {
             padding: 10px;
-            width: 100%; /* Full width for mobile */
+            width: 100%;
             max-width: 400px;
             border: none;
-            border-radius: 20px; /* Curved corners */
+            border-radius: 20px;
             margin-bottom: 15px;
-            background-color: #FFFFFF; /* White for inputs */
-            color: #17252A; /* Dark Blue text */
+            background-color: #FFFFFF;
+            color: #17252A;
             font-size: 1em;
         }
 
         #searchQuery:focus {
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 58, 140, 0.5); /* Light Blue glow on focus */
+            box-shadow: 0 0 5px rgba(0, 58, 140, 0.5);
         }
 
         .card {
-            
-            padding: 20px; /* Ensure enough padding inside the card */
-            background-color: #FFFFFF; /* White card background */
-            border-radius: 20px; /* Rounded corners */
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-
         .suggestion-form {
             display: flex;
-            flex-direction: column; /* Stack inputs vertically */
-            align-items: stretch; /* Ensure inputs take full width */
-            gap: 15px; /* Space between items */
+            flex-direction: column;
+            align-items: stretch;
+            gap: 15px;
         }
 
         .suggestion-form input[type="text"],
         .suggestion-form input[type="number"],
         .suggestion-form select,
         .submit-button {
-            width: 100%; /* Make inputs and button take full width of the form */
-            height: 50px; /* Set a fixed height for uniformity */
-            padding: 12px; /* Consistent padding */
-            background-color: #FFFFFF; /* White for inputs */
-            border: 1px solid #3AAFA9; /* Light Blue border */
-            border-radius: 20px; /* Curved corners */
-            color: #17252A; /* Dark Blue text */
-            font-size: 1em; /* Consistent font size */
+            width: 100%;
+            height: 50px;
+            padding: 12px;
+            background-color: #FFFFFF;
+            border: 1px solid #3AAFA9;
+            border-radius: 20px;
+            color: #17252A;
+            font-size: 1em;
         }
 
         .suggestion-form input[type="text"]:focus,
         .suggestion-form input[type="number"]:focus,
         .suggestion-form select:focus {
             outline: none;
-            box-shadow: 0 0 8px rgba(58, 175, 169, 0.6); /* Light Blue glow on focus */
-            border-color: #2B7A78; /* Teal border on focus */
+            box-shadow: 0 0 8px rgba(58, 175, 169, 0.6);
+            border-color: #2B7A78;
         }
 
         .submit-button {
-            background-color: #3AAFA9; /* Light Blue */
-            color: #FFFFFF; /* White text */
-            border: none; /* No border */
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: background-color 0.3s; /* Smooth transition */
+            background-color: #3AAFA9;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
         .submit-button:hover {
-            background-color: #2B7A78; /* Teal on hover */
-            color: #FFFFFF; /* White text on hover */
+            background-color: #2B7A78;
         }
 
         .results {
@@ -231,8 +217,8 @@
         }
 
         .result-item {
-            background-color: #3AAFA9; /* Light Blue */
-            color: #FFFFFF; /* White text */
+            background-color: #3AAFA9;
+            color: #FFFFFF;
             padding: 10px 20px;
             border-radius: 4px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -244,50 +230,44 @@
         }
 
         .no-suggestions {
-            color: #E63946; /* Red for no results */
+            color: #E63946;
         }
 
         /* Footer */
         footer {
-            background-color: #17252A; /* Dark Blue footer */
-            color: #FFFFFF; /* White text */
+            background-color: #17252A;
+            color: #FFFFFF;
             text-align: center;
             padding: 15px;
-            position: fixed; /* Fixed footer */
+            position: fixed;
             left: 0;
             bottom: 0;
             width: 100%;
-            z-index: 1000; /* Add or adjust z-index */
+            z-index: 1000;
         }
-
-        
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .navbar h1 {
-                font-size: 1.2em; /* Adjust heading size for mobile */
-            }
-            
-            .navbar {
-                flex-direction: column; /* Stack navbar items vertically */
-                align-items: flex-start; /* Align items to the left */
+                font-size: 1.2em;
             }
 
-            .navbar .nav-button {
-                margin-bottom: 10px; /* Space between nav button and dropdown */
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            
+
             .slider-container {
-                flex-direction: column; /* Stack elements vertically */
-                width: 100%; /* Full width */
+                flex-direction: column;
+                width: 100%;
             }
-            
+
             .results {
-                padding: 0 10px; /* Padding for results */
+                padding: 0 10px;
             }
 
             .result-item {
-                width: 90%; /* Limit item width on mobile */
+                width: 90%;
             }
         }
     </style>
@@ -327,14 +307,8 @@
 
         // Close dropdown if clicked outside
         window.onclick = function(event) {
-            if (!event.target.matches('.nav-button')) {
-                const dropdowns = document.getElementsByClassName("dropdown");
-                for (let i = 0; i < dropdowns.length; i++) {
-                    const openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+            if (!event.target.closest('.nav-button') && !event.target.closest('.dropdown')) {
+                document.getElementById("navbarDropdown").classList.remove("show");
             }
         }
     </script>
