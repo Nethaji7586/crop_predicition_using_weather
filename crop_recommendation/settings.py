@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url 
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,10 +75,7 @@ WSGI_APPLICATION = 'crop_recommendation.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
@@ -126,3 +124,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'  # Redirect to your login page
 LOGIN_REDIRECT_URL = 'suggest_crops'  # Redirect to the crop suggestions page after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect to the login page after logout
+MEDIA_URL='media/'
