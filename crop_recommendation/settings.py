@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gmdy^mhufqi77hf91*g@78^)s-+=eyq*24b0)gt29-*b-_1546
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['crop-recommendation.onrender.com']
 
 # Application definition
 
@@ -121,3 +121,6 @@ LOGIN_URL = '/login/'  # Redirect to your login page
 LOGIN_REDIRECT_URL = 'suggest_crops'  # Redirect to the crop suggestions page after login
 LOGOUT_REDIRECT_URL = 'login'  # Redirect to the login page after logout
 MEDIA_URL='media/'
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Use 'staticfiles' or any directory name
