@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Suggested Crops{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h2>Crop Suggestion Form</h2>
+        <form method="POST" class="suggestion-form" aria-labelledby="crop-suggestion-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-button">Get Crop Suggestions</button>
+        </form>
+    </div>
+
+    <div class="results">
+        {% if crops %}
+            <h2>Suggested Crops:</h2>
+            <div class="result-list">
+                {% for crop in crops %}
+                    <div class="result-item">{{ crop }}</div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>No Suggestions Available</h2>
+            <p class="no-suggestions">Try adjusting your inputs for better suggestions!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Market Rates{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #DEF2F1; /* Soft teal background */
+        color: #17252A; /* Dark blue text */
+        font-family: Arial, sans-serif; /* Font family */
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        background-color: #FFFFFF; /* Card background */
+        padding: 20px; /* Padding inside the card */
+        border-radius: 10px; /* Rounded corners */
+        margin: 20px; /* Space around the card */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    h2 {
+        text-align: center; /* Center the heading */
+        color: #3AAFA9; /* Light blue heading color */
+        margin-bottom: 20px; /* Space below heading */
+    }
+
+    form {
+        display: flex;
+        flex-direction: column; /* Stack inputs vertically */
+        align-items: stretch; /* Make inputs full width */
+        gap: 15px; /* Space between form elements */
+        margin-bottom: 20px; /* Space below form */
+    }
+
+    input[type="text"] {
+        height: 50px; /* Input height */
+        padding: 12px; /* Padding inside input */
+        background-color: #FFFFFF; /* Input background */
+        border: 1px solid #3AAFA9; /* Input border */
+        border-radius: 20px; /* Curved corners */
+        color: #17252A; /* Dark blue text color */
+        font-size: 1em; /* Font size */
+    }
+
+    input[type="range"] {
+        /* Remove default styling */
+        width: 100%; /* Full width */
+        height: 10px; /* Slider height */
+        background: #3AAFA9; /* Slider background */
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Remove default styling */
+        appearance: none; /* Remove default styling */
+        width: 20px; /* Thumb width */
+        height: 20px; /* Thumb height */
+        background: #17252A; /* Dark blue thumb color */
+        border-radius: 50%; /* Round thumb */
+        cursor: pointer; /* Pointer cursor on hover */
+    }
+
+    .slider-container {
+        display: flex; /* Use flexbox for layout */
+        align-items: center; /* Center vertically */
+        justify-content: space-between; /* Space labels evenly */
+    }
+
+    .range-labels {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Space labels evenly */
+        margin-top: 10px; /* Space above labels */
+        align-items: center; /* Align items vertically */
+    }
+
+    #minPriceLabel, #maxPriceLabel {
+        color: #3AAFA9; /* Light blue text color */
+        font-size: 1em; /* Font size */
+        font-weight: bold; /* Bold text */
+        text-align: center; /* Center align text */
+        width: 60px; /* Fixed width for consistent appearance */
+    }
+
+    table {
+        width: 100%; /* Full width */
+        border-collapse: collapse; /* Remove space between borders */
+        margin-top: 20px; /* Space above table */
+    }
+
+    th, td {
+        padding: 12px; /* Cell padding */
+        text-align: left; /* Left align text */
+        border-bottom: 1px solid #3AAFA9; /* Bottom border */
+    }
+
+    th {
+        background-color: #3AAFA9; /* Header background */
+        color: #FFFFFF; /* Header text color */
+    }
+
+    tr:hover {
+        background-color: rgba(58, 175, 169, 0.1); /* Highlight row on hover */
+    }
+
+    tr:nth-child(even) {
+        background-color: #FFFFFF; /* Alternate row color */
+    }
+
+    tr:nth-child(odd) {
+        background-color: #DEF2F1; /* Alternate row color */
+    }
+</style>
+
+<!-- Search Form -->
+<form id="filterForm">
+    <input type="text" id="searchQuery" placeholder="Search by Commodity or District">
+
+    <div class="slider-container">
+        <span id="minPriceLabel">-</span> <!-- Updated default value -->
+        <input type="range" id="priceSlider" min="0" max="10000" value="0" step="10" oninput="updatePriceLabels(); filterResults();">
+        <span id="maxPriceLabel">+</span> <!-- Updated default value -->
+    </div>
+</form>
+
+<div class="card">
+    <table id="marketTable">
+        <thead>
+            <tr>
+                <th>Commodity Name</th>
+                <th>Market ID</th>
+                <th>Min Price</th>
+                <th>Max Price</th>
+                <th>Modal Price</th>
+                <th>District Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in market_data %}
+                <tr data-commodity="{{ item.commodity_name|lower }}" data-district="{{ item.district_name|lower }}" data-min-price="{{ item.min_price }}" data-max-price="{{ item.max_price }}">
+                    <td>{{ item.commodity_name }}</td>
+                    <td>{{ item.market_id }}</td>
+                    <td>{{ item.min_price }}</td>
+                    <td>{{ item.max_price }}</td>
+                    <td>{{ item.modal_price }}</td>
+                    <td>{{ item.district_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function updatePriceLabels() {
+        const slider = document.getElementById('priceSlider');
+        const value = slider.value;
+        const minPrice = Math.max(0, value - 500);
+        const maxPrice = Math.min(10000, value + 500);
+        document.getElementById('minPriceLabel').innerText = minPrice;
+        document.getElementById('maxPriceLabel').innerText = maxPrice;
+    }
+
+    function filterResults() {
+        const query = document.getElementById('searchQuery').value.toLowerCase();
+        const sliderValue = parseFloat(document.getElementById('priceSlider').value) || 0;
+        const minPrice = Math.max(0, sliderValue - 500);
+        const maxPrice = Math.min(10000, sliderValue + 500);
+        const rows = document.querySelectorAll('#marketTable tbody tr');
+
+        rows.forEach(row => {
+            const commodity = row.getAttribute('data-commodity');
+            const district = row.getAttribute('data-district');
+            const rowMinPrice = parseFloat(row.getAttribute('data-min-price'));
+            const rowMaxPrice = parseFloat(row.getAttribute('data-max-price'));
+
+            if ((commodity.includes(query) || district.includes(query)) && 
+                (rowMinPrice >= minPrice && rowMaxPrice <= maxPrice)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>
+{% endblock %}

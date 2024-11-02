@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Historical Crop Data{% endblock %}
+
+{% block content %}
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>State Name</th>
+                <th>District Name</th>
+                <th>Crop Year</th>
+                <th>Season</th>
+                <th>Crop</th>
+                <th>Area (hectares)</th>
+                <th>Production (tonnes)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data_sample.values %}
+                <tr>
+                    {% for item in row %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
