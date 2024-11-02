@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: crop_recommendation
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn crop_recommendation:application"
+    envVars:
+      DATABASE_URL: "postgres://crops_pt2w_user:m8iapv5ZpICG2lrtLOLEGtHNcLIqZcHW@db.render.com:5432/crops"
