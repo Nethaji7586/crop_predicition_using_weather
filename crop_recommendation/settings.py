@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-gmdy^mhufqi77hf91*g@78^)s-+=eyq*24b0)gt29-*b-_1546
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['crop_recommendation.onrender.com']
+ALLOWED_HOSTS = ['crop-predicition-using-weather.onrender.com']
 
 # Application definition
 
